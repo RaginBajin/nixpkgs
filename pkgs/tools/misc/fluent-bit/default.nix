@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
   cmakeFlags = [ "-DFLB_METRICS=ON" "-DFLB_HTTP_SERVER=ON" ];
 
   # _FORTIFY_SOURCE requires compiling with optimization (-O)
-  NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isGNU "-O";
+  NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isGNU "-O"
+  + lib.optionalString stdenv.isDarwin
+                      "-headerpad_max_install_names";
 
   outputs = [ "out" "dev" ];
 
