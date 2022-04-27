@@ -113,7 +113,7 @@ let
       # See https://wiki.openssl.org/index.php/Compilation_and_Installation#Configure_Options
       # for a comprehensive list of configuration options.
       ++ lib.optional (lib.versionAtLeast version "1.1.0" && static) "no-shared"
-      ++ lib.optional (lib.versionAtLeast version "1.1.0") "headerpad_max_install_names";
+      ++ lib.optional (lib.versionAtLeast version "1.1.0") "-headerpad_max_install_names";
 
 
 
